@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top ">
+    <div class="container-lg">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('category', category_id=1) }}">Children</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('category', category_id=2) }}">Man</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('category', category_id=3) }}">Woman</a>
+                </li>
+                {% if current_user.role == "admin" %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('add_product') }}">AddProduct</a>
+                </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('wish_list') }}">WishList</a>
+                </li>
+            </ul>
+        </div>
+        <div class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" id="searchInput">
+            <button class="btn btn-outline-success" type="submit" id="searchButton">Search</button>
+        </div>
+        {% if current_user.is_authenticated%}
+        <form class="d-flex">
+            <a class="btn btn-danger" href="/logout">Logout</a>
+        </form>
+        {% else %}
+        <form class="d-flex btn-group ms-3">
+            <a href="/login" class="btn btn-outline-success" type="submit">login</a>
+            <a href="/register" class="btn btn-success" type="submit">sign up</a>
+        </form>
+        {% endif %}
+
+    </div>
+</nav>

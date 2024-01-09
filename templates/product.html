@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid bg-white border-top border-bottom shadow mt-3 p-3">
+    <img src="/static/{{ chosen_product.img }}" class="img-fluid" alt="{{ chosen_product.name }}">
+    <table class="table table-bordered mt-3">
+        <tbody>
+            <tr>
+                <th scope="row">Name</th>
+                <td>{{ chosen_product.name }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Price</th>
+                <td>{{ chosen_product.price }}₾</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}
